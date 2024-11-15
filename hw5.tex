@@ -1,0 +1,89 @@
+\documentclass{article}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[a4paper, left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\pagestyle{fancy}
+\cfoot{}
+\lhead{}
+\chead{\Large\bf Intro to Proofs HW \# 5}
+\lhead{Sonit Sahoo}
+\rhead{Page \# \thepage}
+\setlength{\headsep}{0.2in}
+
+\begin{document}
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+    \item 
+        \begin{enumerate}[label=\textbf{\alph*}.]
+            \item If $a \equiv 3$ (mod 7), then
+                \[a^2 \equiv 3^2 \text{ (mod 7)} \equiv 9 \text{ (mod 7)} \equiv 2 \text{ (mod 7)}\]
+                \[5a \equiv 5\cdot3 \text{ (mod 7)} \equiv 15 \text{ (mod 7)} \equiv 1 \text{(mod 7)}\]
+            Adding the two, we get
+            \[a^2 + 5a \equiv (2+1) \text{ (mod 7)} \equiv 3 \text{ (mod 7)}\]
+            Thus, it is \underline{true} that, $\forall a \in \mathbb{Z}$, if $a \equiv 3$ (mod 7), then ($a^2+5a) \equiv 3$ (mod 7).
+            \item We can split modulo 7 into 7 equivalence classes for all $a \in \mathbb{Z}$, $[0],[1],[2],[3],[4],[5],[6],[7]$. Plugging all of these into $a^2+5a$ (mod 7), we get
+            \[[0]: 0^2+5\cdot0 \text{ (mod 7)} \equiv 0 \text{ (mod 7)}\]
+            \[[1]: 1^2+5\cdot1 \text{ (mod 7)} \equiv 6 \text{ (mod 7)}\]
+            \[[2]: 2^2+5\cdot2 \text{ (mod 7)} \equiv 14 \text{ (mod 7)} \equiv 0 \text{ (mod 7)}\]
+            \[[3]: 3^2+5\cdot3 \text{ (mod 7)} \equiv 24 \text{ (mod 7)} \equiv 3 \text{ (mod 7)}\]
+            \[[4]: 4^2+5\cdot4 \text{ (mod 7)} \equiv 36 \text{ (mod 7)} \equiv 1 \text{ (mod 7)}\]
+            \[[5]: 5^2+5\cdot5 \text{ (mod 7)} \equiv 50 \text{ (mod 7)} \equiv 1 \text{ (mod 7)}\]
+            \[[6]: 6^2+5\cdot6 \text{ (mod 7)} \equiv 66 \text{ (mod 7)} \equiv 3 \text{ (mod 7)}\]
+            From this, we see that $a^2+5a \equiv \text{ 3 (mod 7)}$ when $a \in [3] \lor [6]$. Thus, it is \underline{false} that if ($a^2+5a) \equiv 3$ (mod 7), then $a \equiv 3$ (mod 7) as $a \equiv 6$ (mod 7) is also possible.
+        \end{enumerate}
+    \item Let $a,b,c\in\mathbb{Z}$ and $n \in\mathbb{Z}$. Let $a\equiv a\text{ (mod n)}$.
+    \[a\equiv a\text{ (mod n)}\]
+    \[a-a\equiv a-a\text{ (mod n)}\]
+    \[0\equiv0\text{ (mod n)}\]
+    This is true, so $\sim$ is reflexive. Let $a\sim{b}$.
+    \[a\equiv b\text{ (mod n)}\]
+    \[a-a\equiv b-a\text{ (mod n)}\]
+    \[-1\cdot0\equiv -1\cdot(b-a)\text{ (mod n)}\]
+    \[0\equiv a-b\text{ (mod n)}\]
+    \[b\equiv a\text{ (mod n)}\]
+    Thus, $\sim$ is symmetric. Let $a\sim{b}$ and $b\sim{c}$.
+    \[a\equiv b\text{ (mod n)}\]
+    \[b\equiv c\text{ (mod n)}\]
+    \[a+b\equiv b+c\text{ (mod n)}\]
+    \[a+b-b\equiv b+c-b\text{ (mod n)}\]
+    \[a\equiv c\text{ (mod n)}\]
+    Thus, $a\sim{c}$ and $\sim$ is transitive. Since $\sim$ is reflexive, symmetric, and transitive, $\sim$ is an equivalence relation.
+    \item Let $x\sim y$.
+    \[|x|+|y|=10\]
+    If we reorganize, we get
+    \[|y|+|x|=10\]
+    Thus, if $x\sim y$, then $y\sim x$, meaning that R is symmetric.\\\\
+    If $R$ is reflexive, then $3\sim{3}$. Let us check this by plugging in:
+    \[|x|+|y|=10\]
+    \[|3|+|3|=10\]
+    \[3+3=10\]
+    \[6=10\]
+    This means $3\not\sim{3}$, thus $R$ is not reflexive.\\\\
+    Plugging in, we see that $4\sim{6}$ and $6\sim{-4}$  is true.
+    \[|4|+|6|=10\]
+    \[4+6=10\]
+    \[10=10\]
+    \[|6|+|-4|=10\]
+    \[6+4=10\]
+    \[10=10\]
+    If $R$ is transitive, then $4\sim{-4}$. Let's check this.
+    \[|4|+|-4|=10\]
+    \[4+4=10\]
+    \[8=10\]
+    Obviously, $8\neq 10$ meaning $4\not\sim{-4}$, so $R$ is not transitive, by contradiction.
+    \item 
+        \begin{enumerate}[label=\textbf{\alph*}.]
+                \item Let $a,b,c\in\mathbb{R}$ such that $\sin(a)=\sin(b)=\sin(c)$. Obviously, $\sin(a)=\sin(a)$, so $f(a)=f(a)$, and $a\sim{a}$, meaning $R$ is reflexive. Since $\sin(a)=\sin(b)$, $\sin(b)=\sin(a)$, so $f(a)=f(b)$ and $f(b)=f(a)$, thus $a\sim{b}$ and $b\sim{a}$, meaning $R$ is symmetric. Since $\sin(a)=\sin(b)=\sin(c)$, $\sin(a)=\sin(b)$, $\sin(b)=\sin(c)$, and $\sin(a)=\sin(c)$, so $a\sim{b}$, $b\sim{c}$, and $a\sim{c}$, meaning $R$ is transitive. Since $R$ is reflexive, symmetric, and transitive, it is an equivalence relation. 
+            \item $[\pi]=\{k\pi|k\in\mathbb{Z}\}$ 
+        \end{enumerate}
+    \item 
+        \begin{enumerate}[label=\textbf{\alph*}.]
+            \item $[(3,4)]=\{c,d\in\mathbb{R}|c^2+d^2=25\}$
+            \item The equivalence class $[(a,b)]$, where $a,b\in\mathbb{Z}$, can, generally, be represented as a circle whose radius is $\sqrt{a^2+b^2}$ and whose center is the origin.
+        \end{enumerate}
+\end{enumerate}
+
+\end{document}

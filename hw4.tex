@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[a4paper, left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\pagestyle{fancy}
+\cfoot{}
+\lhead{}
+\chead{\Large\bf Intro to Proofs HW \# 4}
+\lhead{Sonit Sahoo}
+\rhead{Page \# \thepage}
+\setlength{\headsep}{0.2in}
+
+\begin{document}
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+    \item
+        \begin{enumerate}[label=\textbf{\alph*}.]
+            \item Let $a,b,c,d \in \mathbb{Z}$. If $g$ is injective, $g(a,b)=g(c,d)$ should only be true when $a=c$ and $b=d$. Let us check for this property.
+            \[g(a,b)=g(c,d)\]
+            \[(2a,a-b)=(2c,c-d)\]
+            \begin{align}\notag
+                2a &= 2c & a-b &= c-d \\ \notag
+                a &= c & a-c &= b-d \notag
+            \end{align}
+            Let us substitute $a$ for $c$ in the second equation.
+            \[c-c=b-d\]
+            \[0=b-d\]
+            \[b-d\]
+            Thus, we have proven that  $g$ \underline{is injective}. \\\\ However, $g$ is \underline{not surjective}, as the first element of any of its outputs can never be odd. Since it is not surjective, it is also \underline{not bijective}.
+            \item Let $a,b,c,d \in \mathbb{Z}$. If $h$ is injective, $h(a,b)=h(c,d)$ should only be true when $a=c$ and $b=d$. Let us check for this property.
+            \[h(a,b)=h(c,d)\]
+            \[\frac{a+b}{b}=\frac{c+d}{d}\]
+            \[\frac{a}{b}+\frac{b}{b}=\frac{c}{d}+\frac{d}{d}\]
+            \[\frac{a}{b}+1=\frac{c}{d}+1\]
+            \[\frac{a}{b}=\frac{c}{d}\]
+            One set of possible values is $a=1,b=2,c=2$ and $d=4$. These values make the statement true, but $a\neq c$ and $b\neq d$, meaning that $h$ is \underline{not injective}. \\\\ Now, let us check for surjectivity. Let $j \text{ and } k \in \mathbb{Z}$. Following this, $j-k \in \mathbb{Z}$. Now, plug in:
+            \[h(j-k,k)\]
+            \[\frac{(j-k)+k}{k}\]
+            \[\frac{j}{k}\]
+            $\frac{j}{k} \in \mathbb{Q}$, so $h$ \underline{is surjective}. Since $h$ is not injective, it is also \underline{not bijective}.
+        \end{enumerate}
+    \item 
+        \begin{enumerate}[label=\textbf{\alph*}.]
+            \item $f(A) \Rightarrow [f(2),f(5)] \Rightarrow [-2\cdot{2}+1,-2\cdot{5}+1] \Rightarrow [-3,-9] \Rightarrow \textbf{[-9,-3]}$
+            \item $x=-2f^{-1}(x)+1 \Rightarrow x-1=-2f^{-1}(x) \Rightarrow \frac{1-x}{2}=f^{-1}(x) \Rightarrow f^{-1}(x)=\frac{1-x}{2}$ \vspace{0.1cm}
+            $f^{-1}(A) \Rightarrow [f^{-1}(2),f^{-1}(5)] \Rightarrow [\frac{1-2}{2},\frac{1-5}{2}] \Rightarrow [-\frac{1}{2},-2] \Rightarrow$ $\textbf{[-2,}$ $\frac{\textbf1}{\textbf2}$ $\textbf{]}$
+        \end{enumerate}
+    \item
+        \begin{enumerate}[label=\textbf{\alph*}.]
+            \item To prove $f^{-1}(f(A))=A$, we must prove that $f^{-1}(f(A)) \subseteq A$, as we can assume $A \subseteq f^{-1}(f(A))$. Let $x \in f^{-1}(f(A))$, then we can say $f(x) \in f(A)$ and that there exists some $a \in A$, such that $f(x)=f(a)$. Since $f$ is an interjection, $x=a$ and then $x \in A$. This proves that $f^{-1}(f(A)) \subseteq A$, so, combining both, $f^{-1}(f(A))=A$ if $f$ is an interjection.
+            \item To prove $f(f^{-1}(C))=C$, we must prove that $C \subseteq f(f^{-1}(C))$, as we can assume $f(f^{-1}(C)) \subseteq C$. (continued on page 2)
+        \end{enumerate}
+    \item 
+        \begin{enumerate}[label=\textbf{\alph*}.]
+            \item We will first prove that $f(S \cup T) \subseteq f(S) \cup f(T)$. Let $y \in f(S \cup T)$ and $x \in S \cup T$. Since $x \in S \cup T$, $x \in S \lor x \in T$, then $y \in f(S) \lor y \in f(T)$, so $y \in f(S) \cup y \in f(T)$. This proves that $f(S \cup T) \subseteq f(S) \cup f(T)$. Next, we will prove that $f(S) \cup f(T) \subseteq f(S \cup T)$. Let $a \in f(S) \cup f(T)$, then $a \in f(S) \lor f(T)$, then let $b \in S \lor T$, then $b \in S \cup T$, so $a \in f(S \cup T)$. This proves that $f(S) \cup f(T) \subseteq f(S \cup T)$. Combining $f(S \cup T) \subseteq f(S) \cup f(T)$ and $f(S) \cup f(T) \subseteq f(S \cup T)$, we can conclude that $f(S \cup T) = f(S) \cup f(T)$.
+            \item Let $x \in S \cap T$ and $y \in f(S \cap T)$. Thus, $x \in S \land x \in T$ and $y \in f(x)$. Then, $y \in f(S) \land y \in f(T)$, so, $y \in f(S) \cap f(T)$. This proves that $f(S \cap T) \subseteq f(S) \cap f(T)$.
+            \item We have already proved that $f(S \cap T) \subseteq f(S) \cap f(T)$, in order to prove equality, we have to prove $f(S) \cap f(T) \subseteq f(S \cap T)$. Let $ y \in f(S) \cap f(T)$, then $y \in f(S) \land y \in f(T)$. We can then let $x_s \in S$ and $x_t \in T$, such that $x_s \neq x_t$ and $f(x_s)=f(x_t)=y$. If we do so, our left side remains valid, but $x_s,x_t \notin S \cap U$. This means that we can not prove that $f(S) \cap f(T) \subseteq f(S \cap T)$, so, generally, $f(S \cap T) \neq f(S) \cap f(T)$.
+            \item Let us continue off the previous part. To prove equality, we have to prove $f(S) \cap f(T) \subseteq f(S \cap T)$. Let $y \in f(S) \cap f(T)$, then $y \in f(S) \land y \in f(T)$. We can then let $x_s \in S$ and $x_t \in T$, such that $f(x_s)=f(x_t)=y$. Since $f$ is injective and $f(x_s)=f(x_t)=y$, we can say that $x_s=x_t$, so $x_s,x_t \in S \cap U$. As a result, $y \in f(S \cap U)$, so $f(S) \cap f(T) \subseteq f(S \cap T)$. Since we know this along with our proof from 4b, we can say that when $f$ is injective, $f(S \cap T) = f(S) \cap f(T)$.
+        \end{enumerate}
+\end{enumerate}
+
+\end{document}
