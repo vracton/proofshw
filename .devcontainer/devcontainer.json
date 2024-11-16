@@ -1,0 +1,6 @@
+{
+	"name": "proofshw",
+	"image": "sanjibsen/weblatex:latest",
+	"remoteUser": "root",
+	"features": {}
+}
