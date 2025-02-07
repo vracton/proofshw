@@ -1,0 +1,154 @@
+\documentclass{article}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[a4paper, left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+% comupter modern font
+
+\pagestyle{fancy}
+\cfoot{}
+\lhead{}
+\chead{\Large\bf Number Thoery HW \# 1 - Axioms}
+\lhead{Sonit Sahoo}
+\rhead{Page \# \thepage}
+\setlength{\headsep}{0.2in}
+
+% colors
+\definecolor{pastelGreen}{HTML}{25b41f}
+\definecolor{pastelRed}{HTML}{b41f1f}
+
+\begin{document}
+\begin{enumerate}[label=\textbf{\arabic*}.]
+    \item 
+    \begin{enumerate}[label=\textbf{\alph*}.]
+        \item 
+        \begin{tabular}{c|c}
+        \textcolor{pastelGreen}{Passes} & \textcolor{pastelRed}{Fails} \\
+        \hline 
+        Addition & Addition \\\\
+        \begin{minipage}{0.425\textwidth}
+            \begin{enumerate}[label=-, itemsep=-3pt]
+                \item Closure
+                \item Compatibility
+                \item Associativity
+                \item Commutativity
+            \end{enumerate}
+        \end{minipage}
+        &
+        \begin{minipage}{0.425\textwidth}
+            \begin{enumerate}[label=-, itemsep=-3pt]
+                \item Identity - For there to be an identity, there must be a positive integer $b$ such that $b+a=a$ for all positive integers $a$. This means that $b$ must be greater than all $a$. This is obviously not possible as there is no greatest positive integer.
+                \item Inverses - Since there is no identity, there cannot be an inverse. Furthermore, we do not have opposite numbers as all elements are positive integers.
+            \end{enumerate}
+        \end{minipage} \\\\
+        Multiplication & Multiplication \\\\
+        \begin{minipage}{0.425\textwidth}
+            \begin{enumerate}[label=-, itemsep=-3pt]
+                \item Closure
+                \item Compatibility
+                \item Associativity
+                \item Commutativity
+                \item Identity - $1 \times a$ will always equal $a$ because all positive integers are $\geq$ than 1.
+                \item Distributivity over addition
+            \end{enumerate}
+        \end{minipage}
+        &
+        \begin{minipage}{0.425\textwidth}
+            \begin{enumerate}[label=-, itemsep=-3pt]
+                \item None
+            \end{enumerate}
+        \end{minipage}
+        \end{tabular}
+        \item
+        \begin{tabular}{c|c}
+        \textcolor{pastelGreen}{Passes} & \textcolor{pastelRed}{Fails} \\
+        \hline 
+        Addition & Addition \\\\
+        \begin{minipage}{0.425\textwidth}
+            \begin{enumerate}[label=-, itemsep=-3pt]
+                \item Closure
+                \item Compatibility
+                \item Associativity
+                \item Commutativity
+                \item Identity - $(0,0)$
+                \item Inverses - If an ordered pair $(a,b)$ exists, it has an invers $(-(a,b))$ or $(-a,-b)$.
+            \end{enumerate}
+        \end{minipage}
+        &
+        \begin{minipage}{0.425\textwidth}
+            \begin{enumerate}[label=-, itemsep=-3pt]
+                \item None
+            \end{enumerate}
+        \end{minipage} \\\\
+        Multiplication & Multiplication \\\\
+        \begin{minipage}{0.425\textwidth}
+            \begin{enumerate}[label=-, itemsep=-3pt]
+                \item Closure
+                \item Compatibility
+                \item Associativity
+                \item Commutativity
+                \item Identity - $(1,1)$
+                \item Distributivity over addition
+            \end{enumerate}
+        \end{minipage}
+        &
+        \begin{minipage}{0.425\textwidth}
+            \begin{enumerate}[label=-, itemsep=-3pt]
+                \item None
+            \end{enumerate}
+        \end{minipage}
+        \end{tabular}
+    \end{enumerate}
+    \item 
+        By the reflexivity of equals $0=0$. By compatibility of addition with equality, we can add $(x+y)+(-(x+y))+x+(-x)+y+(-y)$ to both sides.
+        \[0=0\]
+        \[0+(x+y)+(-(x+y))+x+(-x)+y+(-y)=0+(x+y)+(-(x+y))+x+(-x)+y+(-y)\]
+        By the additive inverse
+        \[0+(x+y)+(-(x+y))+0+0=0+0+x+(-x)+y+(-y)\]
+        \[(x+y)+(-(x+y))=+x+(-x)+y+(-y)\]
+        By compatibility, we can add $(-x)+(-y)$ to both sides.
+        \[(x+y)+(-(x+y))+(-x)+(-y)=x+(-x)+y+(-y)+(-x)+(-y)\]
+        \[x+y+(-(x+y))+(-x)+(-y)=x+(-x)+y+(-y))+(-x)+(-y)\]
+        By much associativity
+        \[x+(-x)+y+(-y)+(-(x+y))=x+(-x)+(-x)+y+(-y)+(-y)\]
+        Thus, by the additive inverse
+        \[0+0+(-(x+y))=0+(-x)+0+(-y)\]
+        \[(-(x+y))=(-x)+(-y)\]
+        Thus, we have shown that $(-(x+y))=(-x)+(-y)$.
+    \item By left distributivity
+        \[z \cdot (x+y)=z \cdot x + z \cdot y\]
+        Let $w=(x+y)$.
+        \[z \cdot w=z \cdot x + z \cdot y\]
+        By the commutativity of multiplication, $z \cdot w = w \cdot z$, so
+        \[w \cdot z=z \cdot x + z \cdot y\]
+        Substituting $(x+y)$ back in for $w$,
+        \[(x+y) \cdot z=z \cdot x + z \cdot y\]
+        Thus, we have proven right distributivity.
+    \item 
+    \begin{enumerate}[label=\textbf{\alph*}.]
+        \item In class, we found
+        \[0 \cdot a=0\]
+        By the additive inverse, $1+(-1)=0$, thus
+        \[(1+(-1)) \cdot a=0\]
+        By right distributivity,
+        \[1 \cdot a+(-1) \cdot a=0\]
+        By the multiplicative identity, $1 \cdot a=a$, so
+        \[a+(-1) \cdot a=0\]
+        By additive compatibility,
+        \[a+(-1) \cdot a+(-a)=0+(-a)\]
+        By additive associativity,
+        \[a+(-a)+(-1) \cdot a=(-a)\]
+        By the additive inverse,
+        \[0+(-1) \cdot a=(-a)\]
+        \[(-1) \cdot a=(-a)\]
+        Thus, we have shown that $(-1) \cdot a=(-a)$.
+        \item Let us start with $(-a) \cdot b$. From part \underbar{a}, we know $a=(-1)\cdot a$. Thus,
+        \[(-a) \cdot b=((-1)\cdot a) \cdot b\]
+        By multiplicative associativity,
+        \[=(-1)\cdot (a \cdot b)\]
+        By part \underbar{a} again, we can say that this equals $(-(a \cdot b))$. Therefore, we have shown that $(-a) \cdot b=-(a \cdot b)$.
+    \end{enumerate}
+\end{enumerate}
+\end{document}
