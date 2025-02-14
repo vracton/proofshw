@@ -16,6 +16,7 @@
 
 \begin{document}
 \begin{enumerate}[label=\textbf{\arabic*}.]
+    \Large
     \item Let the base case be $n=1$.
     \begin{align}
         \sum_{k=1}^{1}H_k&=H_1=\frac{1}{1}=1\\
@@ -25,7 +26,7 @@
     For the inductive step, assume we have a $j\in\mathbb{N}$, such that $j\geq1$ and $\sum_{k=1}^{j}H_k=(j+1)H_j-j$. Additionally, notice that $H_n+\frac{1}{n+1}=H_{n+1}$, so $H_n=H_{n+1}-\frac{1}{n+1}$.
     \begin{align*}
     \sum_{k=1}^{j+1}H_k &=(\sum_{k=1}^{j}H_k)+H_{j+1}\\
-    &=(j+1)H_j-1+H_{j+1}\\
+    &=(j+1)H_j-j+H_{j+1}\\
     &=(j+1)(H_{j+1}-\frac{1}{j+1})-j+H_{j+1}\\
     &=(j+1)H_{j+1}-(j+1)\frac{1}{j+1}-j+H_{j+1}\\
     &=(j+1)H_{j+1}+1\cdot H_{j+1}-1-j\\
@@ -52,6 +53,7 @@
         &=2^{k+1}+(-1)^{k+1}
     \end{align*}
     This is the same formula for $k+1$; thus, by induction, we have shown that for any positive integer $n$, $f(n)=2^n+(-1)^n$.
+    %base case should be n=0 instead
     \item Let the base case be $n=1$. Obviously, $(x-y)|(x^1-y^1)$, as $(x-y)=1\cdot(x^1-y^1)$, so the base case holds.\\
     For the inductive step, assume we have a $k\in\mathbb{N}$, such that $k\geq1$ and $(x-y)|(x^k-y^k)$. Since $(x-y)|(x^k-y^k)$, $(x^k-y^k)=p\cdot(x-y)$, where $p$ is some polynomial.
     \begin{align*}
