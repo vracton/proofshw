@@ -25,7 +25,7 @@
     \end{enumerate}
     \item 
     \begin{enumerate}[label=\textbf{\alph*}.]
-        \item If an integer $a$, then $2|a$ and we can say that $a=2k$ for some $k\in\mathbb{Z}$. So, we can say that any even integer is in the form $2k$. Multiplying $a\cdot b$, where $a$ is an even integer and $b$ is some integer we get
+        \item If we have an even integer $a$, then $2|a$ and we can say that $a=2k$ for some $k\in\mathbb{Z}$. Furthermore, we can say that any even integer will be in a similar form. Multiplying $a\cdot b$, where $a$ is an even integer and $b$ is some integer we get
         \[a\cdot b\]
         \[=2k\cdot b\]
         \[=2(kb)\]
@@ -38,13 +38,13 @@
         \[=2(2mn+m+n)+1\]
         Since it is in this form, the product is odd. Thus, we have proven that the product of two odd integers is odd.
     \end{enumerate}
-    \item Since we have proven that if $a|b$ and $c|d$ then $ab|cd$. Then, if $a|b$ and $a|b$, we can say $(a\cdot a)|(b \cdot b) \Rightarrow a^2|b^2$.
+    \item We have proven that if $a|b$ and $c|d$ then $ab|cd$. So, if $a|b$ and $a|b$, then we can say $(a\cdot a)|(b \cdot b) \Rightarrow a^2|b^2$.
     \item Let the base case be $n=1$. $a|b$ as it's given, so the base case is true.
     For the inductive hypothesis, assume we have a $k\in\mathbb{Z}$ such that $a^k|b^k$. By the inductive hypothesis and since $a|b$, we can apply the theorem from problem 3 to get 
     \[(a^k\cdot a)|(b^k\cdot b)\]
     \[a^{k+1}|b^{k+1}\]
     This is the same formula for $k+1$; thus, by induction we have shown that $a^n|b^n$ for any positive integer $n$.
-    \item If $n$ is composite, it has at least 2, although not necessarily distinct, prime factors. Let's assume all of these prime factors are greater than $\sqrt{n}$. $n$ is the product of all these factors, but $\sqrt{n}\cdot\sqrt{n}$ is greater than $n$. This is a contradiction, so at least one of these must be $\leq\sqrt{n}$.
+    \item If $n$ is composite, it has at least 2, not necessarily distinct, prime factors. Let the prime factors of $n$ be $d_1,\dots,d_k$. Thus, $n=d_1\times\dots\times d_k$. Now, let's assume that all the factors are $>\sqrt{n}$. Plugging this in we get $n>\sqrt{n}\times\dots\times\sqrt{n}$. Since, there $n$ has at least two prime factors, it is at minimum greater than $\sqrt{n}\cdot\sqrt{n}\Rightarrow n$. However, this is impossible as an integer $n$ can never be greater than itself. Thus, by contradiction, at least one of the prime factors of $n$ must be $\leq\sqrt{n}$.
     \item Let $p$ and $q$  be consecutive odd primes such that $p<q$. Since they are odd, they can be represented as $2k+1$ and $2j+1$ respectively for some $j,k\in\mathbb{Z}$.
     \[p+q\]
     \[=(2k+1)+(2j+1)\]
