@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[a4paper, left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[many]{tcolorbox}
+\usepackage{xcolor}
+\tcbuselibrary{skins}
+
+\pagestyle{fancy}
+\cfoot{}
+\lhead{}
+\chead{\Large\bf Homework}
+\lhead{Page \thepage}
+\rhead{Sonit Sahoo}
+\setlength{\headheight}{18.0pt}
+\definecolor{pastelblue}{rgb}{0.68, 0.85, 0.90}
+\definecolor{pastelorange}{rgb}{1.0, 0.85, 0.7}
+
+\newtcbtheorem[]{problem}{Problem}{
+    enhanced,
+    colback = pastelblue!5,
+    colbacktitle = pastelblue!5,
+    coltitle = black,
+    boxrule = 0pt,
+    frame hidden,
+    borderline west = {0.6mm}{0mm}{pastelblue},
+    fonttitle = \bfseries,
+    before skip = 3ex,
+    after skip = 0pt,
+    sharp corners,
+    rounded corners = northeast,
+}{problem}
+\newtcbtheorem[]{solution}{}{
+    enhanced,
+    colback = pastelorange!5,
+    coltitle = pastelorange!5,
+    boxrule = 0pt,
+    frame hidden,
+    borderline west = {0.6mm}{0mm}{pastelorange},
+    before skip = 0pt,
+    after skip = 3ex,
+    sharp corners,
+    fonttitle = \tiny,
+    rounded corners = southeast,
+    attach title to upper = {},
+    title after break = {},
+    title = {},
+}{solution}
+
+\begin{document}
+\begin{problem}{}{}
+    Problem
+\end{problem}
+\begin{solution}{}{}
+    Solution
+\end{solution}
+
+\begin{problem}{}{}
+    Problem
+    \begin{enumerate}[label=\textbf{\alph*}.]
+        \item
+    \end{enumerate}
+\end{problem}
+\begin{solution}{}{}
+    Solution
+    \begin{enumerate}[label=\textbf{\alph*}.]
+        \item
+    \end{enumerate}
+\end{solution}
+\end{document}
