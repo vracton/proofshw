@@ -1,2 +1,14 @@
-/PDFs/*.gz
+*.gz
 .vscode/
+sonit.png
+naga.png
+albuzz.jpg
+abstract.tex
+*.snm
+*.nav
+*.out
+*.fls
+*.log
+*.aux
+*.fdb_latexmk
+mao*

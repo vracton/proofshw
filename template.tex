@@ -6,6 +6,11 @@
 \usepackage{amsmath}
 \usepackage[many]{tcolorbox}
 \usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage{siunitx}
+%\usepackage[mocha,styleAll]{catppuccinpalette}
+\usepackage{vracto}
 \tcbuselibrary{skins}
 
 \pagestyle{fancy}
@@ -15,41 +20,8 @@
 \lhead{Page \thepage}
 \rhead{Sonit Sahoo}
 \setlength{\headheight}{18.0pt}
-\definecolor{pastelblue}{rgb}{0.68, 0.85, 0.90}
-\definecolor{pastelorange}{rgb}{1.0, 0.85, 0.7}
-
-\newtcbtheorem[]{problem}{Problem}{
-    enhanced,
-    colback = pastelblue!5,
-    colbacktitle = pastelblue!5,
-    coltitle = black,
-    boxrule = 0pt,
-    frame hidden,
-    borderline west = {0.6mm}{0mm}{pastelblue},
-    fonttitle = \bfseries,
-    before skip = 3ex,
-    after skip = 0pt,
-    sharp corners,
-    rounded corners = northeast,
-    breakable
-}{problem}
-\newtcbtheorem[]{solution}{}{
-    enhanced,
-    colback = pastelorange!5,
-    coltitle = pastelorange!5,
-    boxrule = 0pt,
-    frame hidden,
-    borderline west = {0.6mm}{0mm}{pastelorange},
-    before skip = 0pt,
-    after skip = 3ex,
-    sharp corners,
-    fonttitle = \tiny,
-    rounded corners = southeast,
-    attach title to upper = {},
-    title after break = {},
-    title = {},
-    breakable
-}{solution}
+\definecolor{pcolor}{RGB}{71, 105, 216}
+\definecolor{scolor}{RGB}{255, 197, 103}
 
 \begin{document}
 \begin{problem}{}{}

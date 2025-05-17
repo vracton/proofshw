@@ -1,0 +1,102 @@
+\documentclass{article}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[a4paper, left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[many]{tcolorbox}
+\usepackage{xcolor}
+\tcbuselibrary{skins}
+
+\pagestyle{fancy}
+\cfoot{}
+\lhead{}
+\chead{\Large\bf Multi Variable Calculus Homework \# 4b}
+\lhead{Page \thepage}
+\rhead{Sonit Sahoo}
+\setlength{\headheight}{18.0pt}
+\definecolor{pastelblue}{rgb}{0.97, 0.97, 0.58}
+\definecolor{pastelorange}{rgb}{0.596, 0.58, 0.97}
+
+\newtcbtheorem[]{problem}{Problem}{
+    enhanced,
+    colback = pastelblue!5,
+    colbacktitle = pastelblue!5,
+    coltitle = black,
+    boxrule = 0pt,
+    frame hidden,
+    borderline west = {0.6mm}{0mm}{pastelblue},
+    fonttitle = \bfseries,
+    before skip = 3ex,
+    after skip = 0pt,
+    sharp corners,
+    rounded corners = northeast,
+    breakable
+}{problem}
+\newtcbtheorem[]{solution}{}{
+    enhanced,
+    colback = pastelorange!5,
+    coltitle = pastelorange!5,
+    boxrule = 0pt,
+    frame hidden,
+    borderline west = {0.6mm}{0mm}{pastelorange},
+    before skip = 0pt,
+    after skip = 3ex,
+    sharp corners,
+    fonttitle = \tiny,
+    rounded corners = southeast,
+    attach title to upper = {},
+    title after break = {},
+    title = {},
+    breakable
+}{solution}
+
+\begin{document}
+\begin{problem}{}{}
+    Let $g(x,y)=\sqrt[3]{xy}$.
+    \begin{enumerate}[label=\textbf{\alph*}.]
+        \item Is $g$ continuous at the origin?
+        \item Calculate $\frac{\partial g}{\partial x}$ and $\frac{\partial g}{\partial y}$ when $xy\neq0$.
+        \item Show that $g_x(0,0)$ and $g_y(0,0)$ exist.
+        \item Is $g$ differentiable at the origin?
+    \end{enumerate}
+\end{problem}
+\begin{solution}{}{}
+    Solution
+    \begin{enumerate}[label=\textbf{\alph*}.]
+        \item We can check if $g$ is continuous at the origin by simply checking if the limit exists and is equal to $g(0,0)$.
+        \[g(0,0)=\sqrt[3]{0\cdot0}=0\]
+        \[\lim_{(x,y)\to(0,0)} g(x,y)=\sqrt[3]{0\cdot0}=0=g(0,0)\]
+        Thus, $g$ is continuous at the origin.
+        \item 
+        \[\frac{\partial g}{\partial x}=\frac{1}{3}x^{-\frac{2}{3}}\sqrt[3]{y}=\frac{\sqrt[3]{y}}{3\sqrt[3]{x^2}}\]
+        \[\frac{\partial g}{\partial y}=\frac{1}{3}y^{-\frac{2}{3}}\sqrt[3]{x}=\frac{\sqrt[3]{x}}{3\sqrt[3]{y^2}}\]
+        \item Using the limit definition of partial derivatives,
+        \begin{align*}
+            g_x(0,0)&=\lim_{h\to0}\frac{g(0+h,0)-g(0,0)}{h}\\
+            &=\lim_{h\to0}\frac{\sqrt[3]{h\cdot0}-0}{h}\\
+            &=\lim_{h\to0}\frac{0}{h}\\
+            &=0
+        \end{align*}
+        \begin{align*}
+            g_y(0,0)&=\lim_{h\to0}\frac{g(0,0+h)-g(0,0)}{h}\\
+            &=\lim_{h\to0}\frac{\sqrt[3]{0\cdot h}-0}{h}\\
+            &=\lim_{h\to0}\frac{0}{h}\\
+            &=0
+        \end{align*}
+        Thus, the partial derivatives exist.
+        \item For $g$ to be differentiable at the origin, its partial derivatives must exist, and the following must hold:
+        \[\lim_{(x,y)\to(0,0)}\frac{g(x,y)-L(x,y)}{||(x,y)-(0,0)||}=0\]
+        where $L(x,y)=g(\vec{a})+\nabla g(\vec{a})\cdot ((x,y)-\vec{a})$, the linear approximation of $g$ at $\vec{a}$. We know the partial derivatives exist, so we only need to check the last requirement.
+        \[L(0,0)=g(0,0)+g_x(0,0)(0-0)+g_y(0,0)(0-0)=0\]
+        \begin{align*}
+            \lim_{(x,y)\to(0,0)}\frac{g(x,y)-L(x,y)}{||(x,y)-(0,0)||}&=\lim_{(x,y)\to(0,0)}\frac{g(x,y)-0}{||(x,y)||}\\
+            &=\lim_{(x,y)\to(0,0)}\frac{\sqrt[3]{xy}}{\sqrt{x^2+y^2}}\\
+            &=\lim_{r\to0}\frac{\sqrt[3]{r\cos{\theta} \cdot r\sin{\theta}}}{\sqrt{r^2}}\\
+            &=\lim_{r\to0}\frac{r^{\frac{2}{3}}\sqrt[3]{\cos{\theta} \cdot \sin{\theta}}}{|r|}\\
+            &=\lim_{r\to0}|r|^{-\frac{1}{3}}\sqrt[3]{\cos{\theta} \cdot \sin{\theta}}\\
+        \end{align*}
+        There are two cases, $\cos{\theta}\cdot\sin{\theta}=0$ and $\cos{\theta}\cdot\sin{\theta}\neq0$. If $\cos{\theta}\cdot\sin{\theta}=0$, then the limit is 0. If $\cos{\theta}\cdot\sin{\theta}\neq0$, then the limit is not 0 as $|r|^{-\frac{1}{3}}$ goes to $\infty$ as $r\to 0$. Since this limit is not 0 from all directions, $g$ is not differentiable at the origin.
+    \end{enumerate}
+\end{solution}
+\end{document}

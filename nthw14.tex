@@ -1,0 +1,248 @@
+\documentclass{article}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[a4paper, left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[many]{tcolorbox}
+\usepackage{xcolor}
+\usepackage{cancel}
+\usepackage{siunitx}
+\tcbuselibrary{skins}
+
+\pagestyle{fancy}
+\cfoot{}
+\lhead{}
+
+% 4769d8, ffc567
+\definecolor{miamipurple}{RGB}{71, 105, 216}
+\definecolor{miamiyellow}{RGB}{255, 197, 103}
+\definecolor{miamipink}{RGB}{205, 126, 146}
+
+\chead{\Large\bf NT HW \#14 - Rational Numbers II}
+\lhead{Page \thepage}
+\rhead{Sonit Sahoo}
+\setlength{\headheight}{18.0pt}
+
+\usepackage{amssymb,xcolor}
+\newcommand{\correct}{\textcolor{green}{\checkmark}}
+\newcommand{\wrong}{\textcolor{red}{\times}}
+
+\newtcbtheorem[]{problem}{Problem}{
+    enhanced,
+    colback = miamipurple!8,
+    colbacktitle = miamipurple!8,
+    coltitle = black,
+    boxrule = 0pt,
+    frame hidden,
+    borderline west = {0.6mm}{0mm}{miamipurple},
+    fonttitle = \bfseries,
+    before skip = 3ex,
+    after skip = 0pt,
+    sharp corners,
+    rounded corners = northeast,
+    breakable
+}{problem}
+\newtcbtheorem[]{solution}{}{
+    enhanced,
+    colback = miamiyellow!7,
+    coltitle = miamiyellow!7,
+    boxrule = 0pt,
+    frame hidden,
+    borderline west = {0.6mm}{0mm}{miamiyellow},
+    before skip = 0pt,
+    after skip = 3ex,
+    sharp corners,
+    fonttitle = \tiny,
+    rounded corners = southeast,
+    attach title to upper = {},
+    title after break = {},
+    title = {},
+    breakable
+}{solution}
+
+\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+
+\begin{document}
+% \begin{center}
+%     Thanks to $\texttt{Albert Pavlovic}$ for the help!
+%     \tcbincludegraphics[width=0.8\textwidth, colback=miamipurple!20, colframe=miamiyellow!50!black, arc=4mm]{albuzz.jpg}
+% \end{center}
+
+\begin{problem}{}{}
+    Convert each number to the given base.
+    \begin{enumerate}[label=\textbf{\arabic*}.]
+        \item 37016 to base 7
+        \item 212.56 to base 5
+        \item $\frac{1}{4}$ to base 3
+        \item $\pi$ to base 14 (up to 4 decimal places)
+    \end{enumerate}
+\end{problem}
+\begin{solution}{}{}
+    \begin{enumerate}[label=\textbf{\arabic*}.]
+        \item 
+        \begin{tabular}{c|c}
+            \text{q} & \text{r} \\
+            \hline
+            37016 &  \\
+            5288 & 0 \\
+            755 & 3 \\
+            107 & 6 \\
+            15 & 2 \\
+            2 & 1 \\
+            0 & 2
+        \end{tabular} \\
+        \textbf{$212630_7$} 
+        \item $212.56=212+\frac{14}{25}$\\
+        \begin{tabular}{c|c}
+            \text{q} & \text{r} \\
+            \hline
+            212 &  \\
+            42 & 2 \\
+            8 & 2 \\
+            1 & 3 \\
+            0 & 1
+        \end{tabular}
+        \begin{align*}
+            \frac{14}{25}\cdot5 &= \frac{14}{5} = 2 +\frac{4}{5}\\
+            \frac{4}{5}\cdot5 &= 4 \\
+        \end{align*}
+        $212.56_{10}=1322+0.24=$\textbf{$1322.24_5$}
+        \item 
+        \begin{align*}
+            \frac{1}{4}\cdot3 &= 0+\frac{3}{4} \\
+            \frac{3}{4}\cdot3 &= \frac{9}{4} = 2+\frac{1}{4} \\
+            \frac{1}{4}\cdot3 &= 0+\frac{3}{4} \\
+            &\vdots
+        \end{align*}
+        \textbf{$0.\overline{02}_3$}
+        \item $\pi=3+(0.14159\dots)$. $3_{10}=3_{14}$. \\
+        \begin{align*}
+            (\pi-3)\cdot14 = 1.98\dots &= 1+0.98\dots \\
+            ((\pi-3)\cdot14-1)\cdot14 = 13.75\dots &= D+0.75\dots \\
+            (((\pi-3)\cdot14-1)\cdot14-13)\cdot14 = 10.53\dots &= A+0.53\dots \\
+            ((((\pi-3)\cdot14-1)\cdot14-13)\cdot14-10)\cdot14 = 7.42\dots &= 7+0.42\dots
+        \end{align*}
+        $\pi_{10}=3.1DA7\dots_{14}$. \\
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}{}{}
+    Convert each number to base 10.
+    \begin{enumerate}[label=\textbf{\arabic*}.]
+        \item $212.56_8$
+        \item $0.\overline{02}_6$
+        \item $0.\overline{4321}_7$
+    \end{enumerate}
+\end{problem}
+\begin{solution}{}{}
+    \begin{enumerate}[label=\textbf{\arabic*}.]
+        \item $2\cdot8^2+1\cdot8^1+2\cdot8^0+5\cdot8^{-1}+6\cdot8^{-2}=138+\frac{5}{8}+\frac{6}{64}=138\frac{23}{32}$
+        \item Let $x=0.\overline{02}_6$.
+        \begin{align*}
+            6^2x &= 2.\overline{02}_6 \\
+            6^2x - x &= 2.\overline{02}_6 - 0.\overline{02}_6 \\
+            35x &= 2_6 \\
+            35x&=2_{10} \\
+            x &= \frac{2}{35}
+        \end{align*}
+        \item Let $x=0.\overline{4321}_7$
+        \begin{align*}
+            7^4x &= 4321.\overline{4321}_7 \\
+            7^4x - x &= 4321.\overline{4321}_7 - 0.\overline{4321}_7 \\
+            2400x &= 4321_7 \\
+            2400x &= 4\cdot7^3+3\cdot7^2+2\cdot7^1+1\cdot7^0 \\
+            2400x &= 1534_{10} \\
+            x&=\frac{1534}{2400} \\
+            &= \frac{767}{1200} 
+        \end{align*}
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}{}{}
+    Determine the length of the period and the length of the pre-period for each of the following numbers.
+    \begin{enumerate}[label=\textbf{\arabic*}.]
+        \item $\frac{1}{75}$
+        \item $\frac{13}{56}$
+        \item $\frac{7}{91}$
+    \end{enumerate}
+\end{problem}
+\begin{solution}{}{}
+    \begin{enumerate}[label=\textbf{\arabic*}.]
+        \item $75=3\cdot5^2$. $5|10$, so $T=25$ and $U=3$. $T|10^c$ for $c=2$, so the pre-period length is 2. $a$ is the smallest integer such that $10^a\equiv1\pmod{3}$. $10^1\equiv1\pmod{3}$, so $a=1$ and the period length is 1. 
+        \item $56=7\cdot2^3$. $2|10$, so $T=8$ and $U=7$. $T|10^c$ for $c=3$, so the pre-period length is 3. $a$ is the smallest integer such that $10^a\equiv1\pmod{7}$. 
+        \begin{align*}
+            10^1 &\equiv3\pmod{7} \\
+            10^2 &\equiv3^2\equiv2\pmod{7} \\
+            10^6 &\equiv2^3\equiv1\pmod{7} \\
+        \end{align*}
+        Thus, $a=6$ and the period length is 6.
+        \item $\frac{7}{91} = \frac{1}{13}$. $13=13$. $T=1$ and $U=13$. $T|10^c$ for $c=0$, so the pre-period length is 1. $a$ is the smallest integer such that $10^a\equiv1\pmod{13}$.
+        \begin{align*}
+            10^1 &\equiv10\pmod{13} \\
+            10^2 &\equiv10^2\equiv9\pmod{13} \\
+            10^4 &\equiv9^2\equiv3\pmod{13} \\
+            10^6 &\equiv9\cdot3\equiv1\pmod{13}
+        \end{align*}
+        Thus, $a=6$ and the period length is 6.
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}{}{}
+    Find the period length of the pre-period length for the following numbers if they were written in base 12.
+    \begin{enumerate}[label=\textbf{\arabic*}.]
+        \item $\frac{1}{8}$
+        \item $\frac{1}{96}$
+        \item $\frac{1}{132}$
+        \item $\frac{11}{360}$
+    \end{enumerate}
+\end{problem}
+\begin{solution}{}{}
+    \begin{enumerate}[label=\textbf{\arabic*}.]
+        \item $8=2^3$. $T=8$ and $U=1$. $T|12^c$ for $c=2$, so the pre-period length is 2. $a$ is the smallest integer such that $12^a\equiv1\pmod{1}$. $a=0$, so the period length is 0.
+        \item $96=2^5\cdot3$. $T=96$ and $U=1$. $T|12^c$ for $c=3$, so the pre-period length is 3. $a$ is the smallest integer such that $12^a\equiv1\pmod{1}$. $a=0$, so the period length is 0.
+        \item $132=11\cdot12$. $T=12$ and $U=11$. $T|12^c$ for $c=1$, so the pre-period length is 1. $a$ is the smallest integer such that $12^a\equiv1\pmod{11}$. We easily see that $12^1\equiv1\pmod{11}$, so $a=1$ and the period length is 1.
+        \item $360=2^3\cdot3^2\cdot5$. $T=72$ and $U=5$. $T|12^c$ for $c=2$, so the pre-period length is 2. $a$ is the smallest integer such that $12^a\equiv1\pmod{5}$.
+        \begin{align*}
+            12^1 &\equiv 2 \pmod{5} \\
+            12^2 &\equiv2^2\equiv 4 \pmod{5} \\
+            12^4&\equiv4^2\equiv1 \pmod{5}
+        \end{align*}
+        So, $a=4$ and the period length is 4.
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}{}{}
+    Find the smallest positive integer $n$ such that the base-10 expansion of $\frac{1}{n}$ is periodic with pre-period length 3 and length 5.
+\end{problem}
+\begin{solution}{}{}
+    Let $n=T\cdot U$. Since the pre-period length is 3, $T|10^3$ and $T\not{|}10^2$. Since each factor of $T$ divides 10, $T$ must be in the form $2^35^c$ or $2^c5^3$ for $c\leq3$. We want to minimize $n$ so we choose the former. Since the period length is 5, $10^5\equiv1\pmod{U}$. Thus, $Uj=10^5-1=99999$ for some $j\in\mathbb{Z}$. $99999=3^2\cdot41\cdot271$. We want to minimize $n$, so we choose small $U$. We see that $3$ and $3^2$ aren't valid, since they result in a power of 10 being congruent to 1 too soon. So, let's try $U=41$.
+    \begin{align*}
+        10^1 &\equiv10\pmod{41} \\
+        10^2 &\equiv100\equiv18\pmod{41} \\
+        10^3 &\equiv180\equiv16\pmod{41} \\
+        10^4 &\equiv160\equiv37\pmod{41} \\
+        10^5 &\equiv370\equiv1\pmod{41}
+    \end{align*}
+    We see that $U=41$ works. Now, we need to find $n$. We have $T=2^3\cdot5^c$ and $U=41$. The smallest $c$ is 0, so the smallest $n$ is $n=8\cdot41=328$. \\
+\end{solution}
+
+\begin{problem}{}{}
+    For each of $n=1,2,3,4,5,6$, find the set of primes $p$ such that the decimal expansion of $\frac{1}{p}$ is periodic with period length $n$.
+\end{problem}
+\begin{solution}{}{}
+    $\boldsymbol{n=1}$\\
+    $10^1\equiv1\pmod{p}$, so $px=9$ for some $x\in\mathbb{Z}$. $9=3^2$, so $p_{n=1}=\{3\}$. \\
+    $\boldsymbol{n=2}$\\
+    $10^2\equiv1\pmod{p}$, so $px=99$ for some $x\in\mathbb{Z}$. $99=3^2\cdot11$, so we believe $p_{n=2}=\{3,11\}$. However, $p=3$ is not valid as $3\in p_{n=1}$, so $p_{n=2}=\{11\}$. \\
+    $\boldsymbol{n=3}$\\
+    $10^3\equiv1\pmod{p}$, so $px=999$ for some $x\in\mathbb{Z}$. $999=3^3\cdot37$, and taking out previous primes, we get $p_{n=3}=\{37\}$. \\
+    $\boldsymbol{n=4}$\\
+    $10^4\equiv1\pmod{p}$, so $px=9999$ for some $x\in\mathbb{Z}$. $9999=3^2\cdot11\cdot101$, and taking out previous primes, we get $p_{n=4}=\{101\}$. \\
+    $\boldsymbol{n=5}$\\
+    $10^5\equiv1\pmod{p}$, so $px=99999$ for some $x\in\mathbb{Z}$. $99999=3^2\cdot41\cdot271$, and taking out previous primes, we get $p_{n=5}=\{41,271\}$. \\
+    $\boldsymbol{n=6}$\\
+    $10^6\equiv1\pmod{p}$, so $px=999999$ for some $x\in\mathbb{Z}$. $999999=3^3\cdot7\cdot11\cdot13\cdot37$, and taking out previous primes, we get $p_{n=6}=\{7,13\}$.
+\end{solution}
+\end{document}

@@ -1,0 +1,167 @@
+\documentclass{article}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[a4paper, left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[many]{tcolorbox}
+\usepackage{xcolor}
+\usepackage{cancel}
+\usepackage{siunitx}
+\tcbuselibrary{skins}
+
+\pagestyle{fancy}
+\cfoot{}
+\lhead{}
+
+\definecolor{chinared}{rgb}{0.6, 0.4, 0.2} % Brown
+\definecolor{chinayellow}{rgb}{0.2, 0.6, 0.3} % Green
+
+
+\chead{\Large\bf NT HW \#12 - Quadratic Reciprocity}
+\lhead{Page \thepage}
+\rhead{Sonit Sahoo}
+\setlength{\headheight}{18.0pt}
+
+\usepackage{amssymb,xcolor}
+\newcommand{\correct}{\textcolor{green}{\checkmark}}
+\newcommand{\wrong}{\textcolor{red}{\times}}
+
+\newtcbtheorem[]{problem}{Problem}{
+    enhanced,
+    colback = chinayellow!7,
+    colbacktitle = chinayellow!7,
+    coltitle = black,
+    boxrule = 0pt,
+    frame hidden,
+    borderline west = {0.6mm}{0mm}{chinayellow},
+    fonttitle = \bfseries,
+    before skip = 3ex,
+    after skip = 0pt,
+    sharp corners,
+    rounded corners = northeast,
+    breakable
+}{problem}
+\newtcbtheorem[]{solution}{}{
+    enhanced,
+    colback = chinared!7,
+    coltitle = chinared!7,
+    boxrule = 0pt,
+    frame hidden,
+    borderline west = {0.6mm}{0mm}{chinared},
+    before skip = 0pt,
+    after skip = 3ex,
+    sharp corners,
+    fonttitle = \tiny,
+    rounded corners = southeast,
+    attach title to upper = {},
+    title after break = {},
+    title = {},
+    breakable
+}{solution}
+
+\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+
+\begin{document}
+% \begin{center}
+%     Thanks to $\texttt{Albert Pavlovic}$ for the help!
+%     \tcbincludegraphics[width=0.8\textwidth, colback=chinayellow!20, colframe=chinared!50!black, arc=4mm]{albuzz.jpg}
+% \end{center}
+
+\begin{problem}{}{}
+    Try to calculate $\legendre{10}{19}$ using the $T(a,p)$ function. Notice you get the wrong answer. Why?
+\end{problem}
+\begin{solution}{}{}
+    \begin{align*}
+        T(10,19)&=\sum_{j=1}^{\frac{19-1}{2}} \floor{\frac{10j}{19}}\\
+        &=\sum_{j=1}^{9} \floor{\frac{10j}{19}}\\
+        &=\floor{\frac{10}{19}}+\floor{\frac{20}{19}}+\floor{\frac{30}{19}}+\floor{\frac{40}{19}}+\floor{\frac{50}{19}}+\floor{\frac{60}{19}}+\floor{\frac{70}{19}}+\floor{\frac{80}{19}}+\floor{\frac{90}{19}}\\
+        &=0+1+1+2+2+3+3+4+4\\
+        &=20
+    \end{align*}
+    So, according to this, $\legendre{10}{19}$ should be equal to $(-1)^{T(10,19)}=(-1)^{20}=1$. However, this is, in fact, incorrect as $\legendre{10}{19}=-1$. This is because $10$ is even and not odd. The $T(a,p)$ function is only valid for odd $a$.
+\end{solution}
+
+\begin{problem}{}{}
+    Evaluate $\left(\frac{945}{1009}\right)$ using:
+    \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item Legendre Symbols
+        \item Jacobi Symbols
+    \end{enumerate}
+\end{problem}
+\begin{solution}{}{}
+    \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item 
+        \begin{align*}
+            \legendre{945}{1009} &= \legendre{1009}{945}\\
+            &=\legendre{64}{945}\\
+            &=\legendre{2^6}{945}\\
+            &=\legendre{2}{945}^6\\
+            &=(1)^8\\
+            &=1
+        \end{align*}    
+        \item 
+        \begin{align*}
+            \legendre{945}{1009} &= \legendre{1009}{945}\\
+            &=\legendre{64}{945}\\
+            &=\legendre{2^6}{3^3\cdot5\cdot7}\\
+            &={\left(\legendre{2}{3}^3\cdot\legendre{2}{5}\cdot\legendre{2}{7}\right)}^6\\
+            &={\left(1^3\cdot1\cdot1\right)}^6\\
+            &=1^6\\
+            &=1
+        \end{align*}
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}{}{}
+    Find the set of all primes for which 5 is a quadratic residue. The answer should be a set of congruences.
+\end{problem}
+\begin{solution}{}{}
+    We are looking for primes $p$ such that $\legendre{5}{p}=1$. Since $5\not\equiv 3\pmod{4}$, this equals ${\legendre{p}{5}}$. Since $p$ is prime, $\forall p$, $p\not\equiv 0\pmod{5}$. Thus, we have 4 cases: $p\equiv 1,2,3,\text{ or }4\pmod{5}$. Let's find the quadratic residues of $5$:
+    \begin{align*}
+        1^2 &\equiv 1\pmod{5}\\
+        2^2 &\equiv 4\pmod{5}\\
+        3^2 &\equiv 4\pmod{5}\\
+        4^2 &\equiv 1\pmod{5}
+    \end{align*}
+    So, the quadratic residues of $5$ are $1$ and $4$. Thus, $5$ is a quadratic residue of $p$ if and only if $p\equiv 1\pmod{5}$ or $p\equiv 4\pmod{5}$.
+\end{solution}
+
+\begin{problem}{}{}
+    Find the set of all primes for which 3 is a quadratic residue.
+\end{problem}
+\begin{solution}{}{}
+    We are looking for primes $p$ such that $\legendre{3}{p}=1$.
+    \begin{align*}
+        \legendre{3}{p} &=\legendre{p}{3}\cdot(-1)^{\frac{p-1}{2}\frac{3-1}{2}}\\
+        &=\legendre{p}{3}\cdot(-1)^{\frac{p-1}{2}}\\
+    \end{align*}
+    We can split this into two parts, one for $\legendre{p}{3}$ and one for $(-1)^{\frac{p-1}{2}}$. Since $p$ is prime, $\forall p$, $p\not\equiv 0\pmod{3}$. Thus, we have 2 cases for part 1: $p\equiv 1\text{ or }2\pmod{3}$. Let's find the quadratic residues of $3$:
+    \begin{align*}
+        1^2 &\equiv 1\pmod{3}\\
+        2^2 &\equiv 1\pmod{3}
+    \end{align*}
+    So, the quadratic residues of $3$ are $1$. Thus, $\legendre{p}{3}=\begin{cases}
+        1 &\text{ if }p\equiv 1\pmod{3}\\
+        -1 &\text{ if }p\equiv 2\equiv-1\pmod{3}
+    \end{cases}$. Now, for part 2, we can see that this is equivalent to $\legendre{-1}{p}$, which we have proved $=\begin{cases}
+        1 &\text{ if }p\equiv 1\pmod{4}\\
+        -1 &\text{ if }p\equiv 3\equiv-1\pmod{4}
+    \end{cases}$. We want $\legendre{p}{3}\cdot(-1)^{\frac{p-1}{2}\frac{3-1}{2}}$ to equal $1$. This occurs when both parts $=1$ or $=-1$. Thus, 3 is a residue if $p\equiv 1\pmod{3}$ and $p\equiv 1\pmod{4}$ or $p\equiv -1\pmod{3}$ and $p\equiv -1\pmod{4}$. We can then combine these into two congruences: $p\equiv 1\pmod{12}$ or $p\equiv 11\pmod{12}$. Thus, $3$ is a quadratic residue of $p$ if $p\equiv 1\pmod{12}\text{ or } p\equiv11\pmod{12}$.
+\end{solution}
+
+\begin{problem}{}{}
+    Find the set of all primes for which -3 is a quadratic residue.
+\end{problem}
+\begin{solution}{}{}
+    We are looking for primes $p$ such that $\legendre{-3}{p}=1$.
+    \begin{align*}
+        \legendre{-3}{p} &=\legendre{-1}{p}\cdot\legendre{3}{p}\\
+        &=(-1)^{\frac{p-1}{2}}\cdot\legendre{p}{3}\cdot(-1)^{\frac{p-1}{2}}\\
+        &=\legendre{p}{3}\cdot(-1)^{\frac{p-1}{2}+\frac{p-1}{2}}\\
+        &=\legendre{p}{3}\cdot(-1)^{p-1}\\
+    \end{align*}
+    Since $p$ is prime, $p-1$ will always be even, and $(-1)^{p-1}=1$. Thus, we are left with finding $\legendre{p}{3}=1$. As we found in problem \textbf{4}, the quadratic residues of $3$ are $1$. Thus, $-3$ is a quadratic residue of $p$ when $p\equiv1\pmod{3}$.
+\end{solution}
+\end{document}

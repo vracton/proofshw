@@ -1,0 +1,157 @@
+\documentclass{article}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[a4paper, left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[many]{tcolorbox}
+\usepackage{xcolor}
+\tcbuselibrary{skins}
+
+\pagestyle{fancy}
+\cfoot{}
+\lhead{}
+\chead{\Large\bf NT HW \# 6a - Linear Diophantine Equations}
+\lhead{Page \thepage}
+\rhead{Sonit Sahoo}
+\setlength{\headheight}{18.0pt}
+\definecolor{pastelblue}{rgb}{0.97, 0.58, 0.58}
+\definecolor{pastelorange}{rgb}{0.596, 0.58, 0.97}
+
+\newtcbtheorem[]{problem}{Problem}{
+    enhanced,
+    colback = pastelblue!5,
+    colbacktitle = pastelblue!5,
+    coltitle = black,
+    boxrule = 0pt,
+    frame hidden,
+    borderline west = {0.6mm}{0mm}{pastelblue},
+    fonttitle = \bfseries,
+    before skip = 3ex,
+    after skip = 0pt,
+    sharp corners,
+    rounded corners = northeast,
+    breakable
+}{problem}
+\newtcbtheorem[]{solution}{}{
+    enhanced,
+    colback = pastelorange!5,
+    coltitle = pastelorange!5,
+    boxrule = 0pt,
+    frame hidden,
+    borderline west = {0.6mm}{0mm}{pastelorange},
+    before skip = 0pt,
+    after skip = 3ex,
+    sharp corners,
+    fonttitle = \tiny,
+    rounded corners = southeast,
+    attach title to upper = {},
+    title after break = {},
+    title = {},
+    breakable
+}{solution}
+
+\begin{document}
+\Large
+\begin{problem}{}{}
+    Find the general solution to the linear diophantine equation $412x+600y=-24$.
+\end{problem}
+\begin{solution}{}{}
+    We fill first find one solution with the Extended Euclidean Algorithm.
+    \begin{center}
+        \begin{tabular}{c c c c}
+            $q$ & $r$ & $x$ & $y$ \\
+            \hline
+            & 600 & 0 & 1 \\
+            1 & 412 & 1 & 0 \\
+            2 & 188 & $-1$ & 1 \\
+            5 & 36 & 3 & $-2$ \\
+            4 & 8 & $-16$ & 11 \\
+            2 & 4 & 67 & $-46$
+        \end{tabular}
+    \end{center}
+    So, $(412,600)=4$ and $(67,-46)$ is a solution to the equation $412x+600y=(412,600)=4$. $-24 \div 4=-6$, so we can scale $(67,-46)$ by $-6$ to get a solution to the given equation. Scaling, we get $(-402,276)$. We can then plug these values into the general solution equations to get
+    % not sure if this is right name
+    \[x=-402+150t\]
+    \[y=276-103t\]
+\end{solution}
+
+\begin{problem}{}{}
+    True or False, and why: $192x + 250y + 405z = A$ has an integer solution for every integer A.
+\end{problem}
+\begin{solution}{}{}
+    Let's find the solutions for $192x+250y=(192,250)$ with the Extended Euclidean Algorithm.
+    \begin{center}
+        \begin{tabular}{c c c c}
+            $q$ & $r$ & $x$ & $y$ \\
+            \hline
+            & 250 & 0 & 1 \\
+            1 & 192 & 1 & 0 \\
+            3 & 58 & $-1$ & 1 \\
+            3 & 18 & 4 & $-3$ \\
+            4 & 4 & $-13$ & 10 \\
+            2 & 2 & 56 & $-43$
+        \end{tabular}
+    \end{center}
+    Thus, $(56,-43)$ is a solution to $192x+250y=2$. Now, let's scale by 203, so it's equal to $2*203=406$. Doing do, we get $(11368,-8729)$. Now, let's substitute into our original equation. For $(11368,-8729,z)$, $192x+250y+405z=406+405z$. We can see that substituting $z=-1$, we get $406+405z=1$. So, for the values $(11368,-8729,-1)$, $192x+250y+405z=1$. Since, $\forall{A}\in\mathbb{Z}$, $1\cdot A=A$, we can simply scale this ordered pair by $A$ to get any $A$. Thus, it is true that $192x + 250y + 405z = A$ has an integer solution for every integer A.
+\end{solution}
+
+\begin{problem}{}{}
+    Find a non-negative solution to $34s + 76t = 754$. Obtain it methodically, not just by magically naming an answer.
+\end{problem}
+\begin{solution}{}{}
+    Let us first find a solution for $34s+76t=(34,76)$.
+    \begin{center}
+        \begin{tabular}{c c c c}
+            $q$ & $r$ & $s$ & $t$ \\
+            \hline
+            & 76 & 0 & 1 \\
+            2 & 34 & 1 & 0 \\
+            4 & 8 & $-2$ & 1 \\
+            4 & 2 & 9 & $-4$
+        \end{tabular}
+    \end{center}
+    Thus, $(34,76)=2$ and $(9,-4)$ is a solution to $34s+76t=2$. We scale by $\frac{754}{2}=377$ to get $(3393,-1508)$. We can get all solutions to $34s+76t=754$ with the formulas
+    \[s=3393+38d\]
+    \[t=-1508-17d\]
+    For a non-negative solution, $s>0$ and $t>0$.
+    \begin{align*}
+        s&>0 & t&>0 \\
+        3393+38d&>0 & -1508-17d&>0 \\
+        38d&>-3393 & -17d&>1508 \\
+        d &\geq -89 & d&\leq -89
+    \end{align*}
+    Thus, the only such solution is when $d=-89$. Plugging this into the general solution formulas, we get $(11,5)$ as the only non-negative solution to $34s+76t=754$.
+\end{solution}
+
+\begin{problem}{}{}
+    What combinations of nickels, dimes, and quarters can have 16 coins totaling exactly $\$2.00$?
+\end{problem}
+\begin{solution}{}{}
+    Let $n$ be the number of nickels, $d$ the number of dimes, and $q$ the number of quarters. Thus, we can create two equations:
+    \[n+d+q=16\]
+    \[5n+10d+25q=200\]
+    Obviously, $(5,10,25,200)=5$, so we can divide the second equation by $5$ giving us
+    \[n+2d+5q=40\]
+    Let's rearrange and plug in the first equation.
+    \[n+d+q=16\]
+    \[n=16-d-q\]
+    \[16-d-q+2d+5q=40\]
+    \[d+4q=24\]
+    This is a standard linear diophantine equation, so we can follow similar steps as previous problems. However, it is obvious that $(1,4)=1$ and we can easily find $(0,6)$ as one solution. We can then find the equations for the general solutions.
+    \[d=4t\]
+    \[q=6-t\]
+    From our rearranged first equation, we can say
+    \[n=16-d-q\]
+    \[n=16-4t-6+t\]
+    \[n=10-3t\]
+    Thus, for any $t\in\mathbb{Z}$, we will satisfy our original two equations. However, in the real world, we can not have negative coins, so let's account for that.
+    \begin{align*}
+        n&\geq0 & d&\geq0 & q&\geq0 \\
+        10-3t&\geq0 & 4t&\geq0 & 6-t&\geq0 \\
+        3t&\leq10 & t&\geq0 & t&\leq6 \\
+        t&\leq\frac{10}{3} & &
+    \end{align*}
+    Combining all 3 inequalities, we get $0\leq t\leq\frac{10}{3}$. The integer solutions to this are $t=0,1,2,3$. Thus, the only combination of 16 nickels, dimes, or quarters that equal \$2.00 are (in the form $(n,d,q)$) $(10,0,6)$, $(7,4,5)$, $(4,8,4)$, and $(1,12,3)$.
+\end{solution}
+\end{document}

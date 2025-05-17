@@ -1,0 +1,202 @@
+\documentclass{article}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[a4paper, left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[many]{tcolorbox}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage{siunitx}
+\usepackage[mocha,styleAll]{catppuccinpalette}
+\tcbuselibrary{skins}
+
+\pagestyle{fancy}
+\cfoot{}
+\lhead{}
+
+% 4769d8, ffc567
+\definecolor{miamipurple}{RGB}{71, 105, 216}
+\definecolor{miamiyellow}{RGB}{255, 197, 103}
+\definecolor{miamipink}{RGB}{205, 126, 146}
+
+\chead{\Large\bf NT HW \#15 - Continued Fractions I}
+\lhead{Page \thepage}
+\rhead{Sonit Sahoo}
+\setlength{\headheight}{18.0pt}
+
+\newcommand{\correct}{\textcolor{green}{\checkmark}}
+\newcommand{\wrong}{\textcolor{red}{\times}}
+
+\newtcbtheorem[]{problem}{Problem}{
+    enhanced,
+    colback = CtpSurface0,
+    colbacktitle = CtpSurface0,
+    coltitle = CtpRosewater,
+    boxrule = 0pt,
+    frame hidden,
+    borderline west = {0.6mm}{0mm}{CtpBlue},
+    fonttitle = \bfseries,
+    before skip = 3ex,
+    after skip = 0pt,
+    sharp corners,
+    rounded corners = northeast,
+    breakable
+}{problem}
+\newtcbtheorem[]{solution}{}{
+    enhanced,
+    colback = CtpSurface0,
+    coltitle = CtpSurface0,
+    boxrule = 0pt,
+    frame hidden,
+    borderline west = {0.6mm}{0mm}{CtpPeach},
+    before skip = 0pt,
+    after skip = 3ex,
+    sharp corners,
+    fonttitle = \tiny,
+    rounded corners = southeast,
+    attach title to upper = {},
+    title after break = {},
+    title = {},
+    breakable
+}{solution}
+
+
+\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+
+\newcommand{\quotewrap}[1]{“#1”}
+
+\begin{document}
+% \begin{center}
+%     Thanks to $\texttt{Albert Pavlovic}$ for the help!
+%     \tcbincludegraphics[width=0.8\textwidth, colback=miamipurple!20, colframe=miamiyellow!50!black, arc=4mm]{albuzz.jpg}
+% \end{center}
+
+\begin{problem}{}{}
+    \color{CtpText}
+    Find the finite simple continued fraction [$a_0;a_1,\dots,a_n$] for the following rational numbers.
+    \begin{enumerate}[label=\textbf{\arabic*}.]
+        \item $\frac{4}{9}$
+        \item $\frac{372}{1001}$
+        \item $\frac{129}{51}$
+    \end{enumerate}
+\end{problem}
+\begin{solution}{}{}
+    \color{CtpText}
+    \begin{enumerate}[label=\textbf{\arabic*}.]
+        \item 
+        \begin{align*}
+            \frac{4}{9} &= 0 +\frac{1}{\frac{9}{4}} \\
+            &= 0 + \frac{1}{2 + \frac{1}{\frac{4}{1}}} \\
+            &= 0 + \frac{1}{2 + \frac{1}{4}} \\
+            &= [0;2,4]
+        \end{align*}
+        \item 
+        \begin{align*}
+            \frac{372}{1001} &= 0 + \frac{1}{\frac{1001}{372}} \\
+            &= 0 + \frac{1}{2 + \frac{372}{257}} \\
+            &= 0 + \frac{1}{2 + \frac{1}{1+\frac{257}{115}}} \\
+            &= 0 + \frac{1}{2 + \frac{1}{1+\frac{1}{2+\frac{115}{27}}}} \\
+            &= 0 + \frac{1}{2 + \frac{1}{1+\frac{1}{2+\frac{1}{4+\frac{27}{7}}}}} \\
+            &= 0 + \frac{1}{2 + \frac{1}{1+\frac{1}{2+\frac{1}{4+\frac{1}{3+\frac{7}{6}}}}}} \\
+            &= 0 + \frac{1}{2 + \frac{1}{1+\frac{1}{2+\frac{1}{4+\frac{1}{3+\frac{1}{1+\frac{1}{6}}}}}}} \\
+            &= [0;2,1,2,4,3,1,6]
+        \end{align*}
+        \item
+        \begin{align*}
+                \textcolor{CtpText}{\frac{129}{51}} &= \textcolor{CtpText}{2 + \frac{27}{51}} \\
+                &= \textcolor{CtpText}{2 + \frac{1}{\frac{51}{27}}} \\
+                &= \textcolor{CtpText}{2 + \frac{1}{1+\frac{24}{27}}} \\
+                &= \textcolor{CtpText}{2 + \frac{1}{1+\frac{1}{1+\frac{3}{24}}}} \\
+                &= \textcolor{CtpText}{2 + \frac{1}{1+\frac{1}{1+\frac{1}{\frac{24}{3}}}}} \\
+                &= \textcolor{CtpText}{2 + \frac{1}{1+\frac{1}{1+\frac{1}{8+\frac{0}{3}}}}} \\
+                &= \textcolor{CtpText}{2 + \frac{1}{1+\frac{1}{1+\frac{1}{8}}}} \\
+                &= \textcolor{CtpText}{[2;1,1,8]}
+            \end{align*}
+    \end{enumerate}
+\end{solution}
+    
+\begin{problem}{}{}
+    \color{CtpText}
+    For each finite simplified continued fraction, find the $p_k$, the $q_k$, and the convergents $C_k$.
+    \begin{enumerate}[label=\textbf{\arabic*}.]
+        \item $[2;1,5,7,3]$
+        \item $[2;1,1,8]$
+    \end{enumerate}
+\end{problem}
+\begin{solution}{}{}
+    \color{CtpText}
+    \begin{enumerate}[label=\textbf{\arabic*}.]
+        \item
+        \begin{align*}
+        p_0&=2 & q_0&=1 & C_0&=\frac{2}{1}=2 \\
+        p_1&=1\cdot2+1=3 & q_1&=1 & C_1&=\frac{3}{1}=3 \\
+        p_2&=5\cdot3+2=17 & q_2&=5\cdot1+1=6 & C_2&=\frac{17}{6}\\
+        p_3&=7\cdot17+3=122 & q_3&=7\cdot6+1=43 & C_3&=\frac{122}{43} \\
+        p_4&=3\cdot122+17=383 & q_4&=3\cdot43+6=135 & C_4&=\frac{383}{135}
+        \end{align*}
+        \item
+        \begin{align*}
+            p_0&=2 & q_0&=1 & C_0&=\frac{2}{1}=2 \\
+            p_1&=1\cdot2+1=3 & q_1&=1 & C_1&=\frac{3}{1}=3 \\
+            p_2&=1\cdot3+2=5 & q_2&=1\cdot1+1=2 & C_2&=\frac{5}{2} \\
+            p_3&=8\cdot5+3=43 & q_3&=8\cdot2+1=17 & C_3&=\frac{43}{17}
+        \end{align*}
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}{}{}
+    \color{CtpText}
+    Explain why \underbar{2b} should have given \underbar{1c}, but did not.
+\end{problem}
+\begin{solution}{}{}
+    \color{CtpText}
+    Since the continued fractions are the same, we would have expected $C_3$ to be the same. However, this does not happen, because $\frac{129}{51}$ is not simplified. We see that in the final step that $\frac{3}{24}=\frac{1}{8+\frac{0}{3}}$. This last bit, $\frac{0}{3}$, \quotewrap{encodes} some information about the original rational, which is lost when we simplify it to 0. This simplification results in $C_3$ being a different rational.
+\end{solution}
+
+\begin{problem}{}{}
+    \color{CtpText}
+    Given a simple continued fraction $[a_0;a_1,\dots,a_n]$, prove the two relations:
+    \begin{align}
+        \frac{p_k}{p_{k-1}} &= [a_k;a_{k-1},\dots,a_0] \\
+        \frac{q_k}{q_{k-1}} &= [a_k;a_{k-1},\dots,a_1]
+    \end{align}
+\end{problem}
+\begin{solution}{}{}
+    \color{CtpText}
+    \textbf{Relation 1:}\\
+    We can prove this with induction. The base case is $k=1$.
+    \begin{align*}
+        \frac{p_1}{p_0} &= \frac{a_1a_0 + 1}{a_0} \\
+        &= a_1 + \frac{1}{a_0} \\
+        &= [a_1;a_0]
+    \end{align*}
+    Thus, the base case holds. Now, let's assume that for $k=j$ such that $j\in\mathbb{N}$, the relation holds. Now for $k=j+1$:
+    \begin{align*}
+        \frac{p_{j+2}}{p_{j+1}} &= \frac{a_{j+2}p_{j+1} + p_j}{p_{j+1}} \\
+        &= a_{j+2} + \frac{p_j}{p_{j+1}} \\
+        &= a_{j+2} + \frac{1}{\frac{p_{j+1}}{p_j}} \\
+        &= a_{j+2} + \frac{1}{[a_{j+1};a_j,\dots,a_0]} \\
+        &= [a_{j+2};a_{j+1},\dots,a_0]
+    \end{align*}
+    Thus, since the inductive step holds, relation 1 holds for all $k\in\mathbb{N}$. \\
+    \textbf{Relation 2:}\\
+    We can prove this with induction. The base case is $k=1$.
+    \begin{align*}
+        \frac{q_1}{q_0} &= \frac{a_1}{1} \\
+        &= a_1 \\
+        &= [a_1]
+    \end{align*}
+    Thus, the base case holds. Now, let's assume that for $k=j$ such that $j\in\mathbb{N}$, the relation holds. Now for $k=j+1$:
+    \begin{align*}
+        \frac{q_{j+2}}{q_{j+1}} &= \frac{a_{j+2}q_{j+1} + q_j}{q_{j+1}} \\
+        &= a_{j+2} + \frac{q_j}{q_{j+1}} \\
+        &= a_{j+2} + \frac{1}{\frac{q_{j+1}}{q_j}} \\
+        &= a_{j+2} + \frac{1}{[a_{j+1};a_j,\dots,a_1]} \\
+        &= [a_{j+2};a_{j+1},\dots,a_1]
+    \end{align*}
+    Thus, since the inductive step holds, relation 2 holds for all $k\in\mathbb{N}$.
+\end{solution}
+\end{document}

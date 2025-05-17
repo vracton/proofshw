@@ -1,0 +1,159 @@
+\documentclass{article}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[a4paper, left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[many]{tcolorbox}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+\usepackage{siunitx}
+\tcbuselibrary{skins}
+
+\pagestyle{fancy}
+\cfoot{}
+\lhead{}
+\chead{\Large\bf NT HW \# 6b - Multiplicative Functions}
+\lhead{Page \thepage}
+\rhead{Sonit Sahoo}
+\setlength{\headheight}{18.0pt}
+\definecolor{pastelblue}{rgb}{0.61, 1, 0.6}
+\definecolor{pastelorange}{rgb}{1.0, 0.6, 0.99}
+
+\newtcbtheorem[]{problem}{Problem}{
+    enhanced,
+    colback = pastelblue!5,
+    colbacktitle = pastelblue!5,
+    coltitle = black,
+    boxrule = 0pt,
+    frame hidden,
+    borderline west = {0.6mm}{0mm}{pastelblue},
+    fonttitle = \bfseries,
+    before skip = 3ex,
+    after skip = 0pt,
+    sharp corners,
+    rounded corners = northeast,
+    breakable
+}{problem}
+\newtcbtheorem[]{solution}{}{
+    enhanced,
+    colback = pastelorange!5,
+    coltitle = pastelorange!5,
+    boxrule = 0pt,
+    frame hidden,
+    borderline west = {0.6mm}{0mm}{pastelorange},
+    before skip = 0pt,
+    after skip = 3ex,
+    sharp corners,
+    fonttitle = \tiny,
+    rounded corners = southeast,
+    attach title to upper = {},
+    title after break = {},
+    title = {},
+    breakable
+}{solution}
+
+\begin{document}
+\Large
+I created a quick program (after completing problem \#1) to help compute $\sigma(n)$ and $\tau(n)$; \href{https://jsfiddle.net/xfthwe0b/6/}{https://jsfiddle.net/xfthwe0b/6/}. 
+\begin{problem}{}{}
+    Calculate $\tau(n)$ and $\sigma(n)$ for $n=143,144,\text{ and }145$.
+\end{problem}\
+\normalsize
+\begin{solution}{}{}
+    \begin{align*}
+        143=11\cdot13 & 144=2^4\cdot3^2 & 145=5\cdot29 \\
+        \tau(143)&=(1+1)(1+1) & \tau(144)&=(4+1)(2+1) & \tau(145)&=(1+1)(1+1) \\
+        &=\textbf{4} & &=\textbf{15} & &=\textbf{4} \\
+        \sigma(143)&=\sigma(11)\sigma(13) & \sigma(144)&=\sigma(2^4)\sigma(3^2) & \sigma(145)&=\sigma(5)\sigma(29) \\
+        &=(1+11)(1+13) & &=(1+2+4+8+16)(1+3+9) & &=(1+5)(1+29) \\
+        &=\textbf{168} & &=\textbf{403} & &=\textbf{180} \\
+    \end{align*}
+\end{solution}
+\Large
+\begin{problem}{}{}
+    Find 3 numbers with $\tau(n)=24$. Find two numbers with $\sigma(n)=432$.
+\end{problem}
+\begin{solution}{}{}
+    Let's start with the first part. Let $n=p_1^{a_1}p_2^{a_2}p_3^{a_3}$, such that all $p$ are prime and for any $i,j\in\mathbb{Z},p_i\neq p_j$. $\tau(n)$ only depends on $a_i$, so we can figure out some combination of $a_1,a_2,\text{ and }a_3$ and then change $p_1,p_2,\text{ and }p_3$ to generate some $n$s.
+    \begin{align*}
+        \tau(n)&=(a_1+1)(a_2+1)(a_3+1) \\
+        &=24 \\
+        &=2\cdot3\cdot4 \\
+        2\cdot3\cdot4&=(a_1+1)(a_2+1)(a_3+1) \\
+        a_1=1,a_2&=2,a_3=3
+    \end{align*}
+    Thus, $\sigma(p_1^1p_2^2p_3^3)=24$. Now, we can substitute, in the form $(p_1,p_2,p_3)$, $(2,3,5),(5,17,23),\text{ and } (43,417,24043)$. This gives us $\num{2250},\num{17581315},\text{ and }\num{103921769945775943089}$.\\
+    Now, for the second part. Finding a number $n$ such that $\sigma(n)=432$ does not seem easy, so we will take advantage of the fact that $\sigma(n)$ is multiplicative and find $m,o\in\mathbb{N}$ such that $\sigma(m)\sigma(o)=432$. $432=18*24$, so we need to find $m,n\text{ such that }\sigma(m)=18 \text{ and }\sigma(o)=24$. We can then find that $\sigma(10)=\sigma(17)=18$ and $\sigma(15)=\sigma(23)=18$. So, two numbers with $\sigma(n)=432$ are $230$ and $255$.
+\end{solution}
+
+\begin{problem}{}{}
+    Define $\sigma_4(n)$ to be the sum of the fourth powers of the divisors of $n$. Show that $\sigma_4(n)$ is a multiplicative function.
+\end{problem}
+\begin{solution}{}{}
+    From the definition, $\sigma_4(n)=\sum_{d|n}d^4$.
+    \begin{align*}
+        \sigma_4(n)=\sigma_4(ab)&=\sum_{d|ab}d^4 \\
+        &=\sum_{\alpha|a,\beta|b}(\alpha\beta)^4\\
+        &=\sum_{\alpha|a,\beta|b}\alpha^4\beta^4 \text{ (since $x^4$ is obviously multiplicative)} \\
+        &=\sum_{\alpha|a}\sum_{\beta|b}\alpha^4\beta^4 \\
+        &=\sum_{\alpha|a}\alpha^4(\sum_{\beta|b}\beta^4) \text{ (since $\alpha^4$ is a constant)} \\
+        &=\sum_{\alpha|a}\alpha^4\sigma_4(b) \text{ (by definition of $\sigma_4(n)$)} \\
+        &=\sigma_4(b)\sum_{\alpha|a}\alpha^4 \text{ (since $\sigma_4(b)$ is a constant)} \\
+        &=\sigma_4(b)\sigma_4(a) \text{ (by definition of $\sigma_4(n)$)}
+    \end{align*}
+    Thus, $\sigma_4(n)$ is multiplicative.
+\end{solution}
+
+\begin{problem}{}{}
+    Consider the function $\alpha(n)$ which is the product of all factors of $n$. Prove or disprove: $\alpha(n)$ is multiplicative.
+\end{problem}
+\begin{solution}{}{}
+    We will disprove by counterexample.
+    \begin{align*}
+        \alpha(3)&=1\cdot3 \\
+        &=3 \\
+        \alpha(4)&=1\cdot2\cdot4 \\
+        &=8 \\
+    \end{align*}
+    If $\alpha(n)$ were multiplicative, we would expect $\alpha(3)\alpha(4)=\alpha(3\cdot4)=\alpha(12)=3\cdot8=24$. Let us check this.
+    \begin{align*}
+        \alpha(12)&=1\cdot2\cdot3\cdot4\cdot6\cdot12 \\
+        &=1728 \\
+    \end{align*}
+    Obviously, $24\neq1728$. Thus, by counterexample, we have shown that $\alpha(n)$ is not multiplicative.
+\end{solution}
+
+\begin{problem}{}{}
+    Prove that $\tau(n)$ is odd if and only [if] $n$ is a perfect square.
+\end{problem}
+\begin{solution}{}{}
+    Let $n=p_1^{a_1}p_2^{a_2}p_3^{a_3}\dots p_k^{a_k}$. So, $\tau(n)=(a_1+1)(a_2+1)(a_3+1)\dots(a_n+1)$. We see that this product is odd only when all the factors are themselves odd. Thus, $a_1,a_2,a_3\dots a_n$ must be even. Let $a_1=2b_1,a_2=2b_2,a_3=2b_3,\dots,a_n=2b_n$.
+    \begin{align*}
+        n&=p_1^{a_1}p_2^{a_2}p_3^{a_3}\dots p_k^{a_k}\\
+        n&=p_1^{2b_1}p_2^{2b_2}p_3^{2b_3}\dots p_k^{2b_k}\\
+        n&=(p_1^{b_1}p_2^{b_2}p_3^{b_3}\dots p_k^{b_k})^2
+    \end{align*}
+    Thus, if $\tau(n)$ is odd, $n$ is a perfect square. By performing a similar proof, just in reverse, we can prove the converse. Thus, we have shown that $\tau(n)$ is odd if and only if $n$ is a perfect square.
+\end{solution}
+
+\begin{problem}{}{}
+    Determine and prove a criterion that is equivalent to $\sigma(n)$ being odd.
+\end{problem}
+\begin{solution}{}{}
+    I assert $\sigma(n)$ to be odd if $n=2^k\cdot o^2$ for $k,o\in\mathbb{N}$ such that $k\geq0$ and $o$ is an odd integer. Since $\sigma$ is multiplicative, $\sigma(n)=\sigma(a_1)\sigma(a_2)\sigma(a_3)\dots\sigma(a_n)$. $\sigma(n)$ is odd only when $\sigma(a_1),\sigma(a_2),\sigma(a_3),\dots,\sigma(a_n)$ are all odd. Since $(2,o)=1$, $\sigma(2^ko^2)=\sigma(2^k)\sigma(o^2)$.
+    \begin{align*}
+        \sigma(2^k)&=2^0+2^1+2^2+\dots+2^k \\
+        &=2(2^0+2^1+\dots+2^{k-1})+1
+    \end{align*}
+    Thus, $\sigma(2^k)$ is odd. All factors of $o^2$ are odd since $o$ is odd. So, $\sigma(o^2)$ is a sum of odd integers. Furthermore, as we have shown in problem 5, $\tau(n)$, or the number of divisors of $n$, is odd when $n$ is a perfect square. Thus, $\sigma(o^2)$ is the sum of an odd number of odd integers. We can then see that this means $\sigma(o^2)$ itself is odd. Since $\sigma(2^k)$ and $\sigma(o^2)$ are both odd, so is $\sigma{2^ko^2}$. Thus, we have shown that if $n$ is in the form $2^k\cdot o^2$, $\sigma(n)$ is odd.
+\end{solution}
+\end{document}

@@ -1,0 +1,47 @@
+\usepackage{amsmath}
+\usepackage{xparse}
+
+\allowdisplaybreaks
+
+\newcommand{\correct}{\textcolor{green}{\checkmark}}
+\newcommand{\wrong}{\textcolor{red}{\times}}
+
+\newtcbtheorem[]{problem}{Problem}{
+    enhanced,
+    colback = pcolor!8,
+    colbacktitle = pcolor!8,
+    coltitle = black,
+    boxrule = 0pt,
+    frame hidden,
+    borderline west = {0.6mm}{0mm}{pcolor},
+    fonttitle = \bfseries,
+    before skip = 3ex,
+    after skip = 0pt,
+    sharp corners,
+    rounded corners = northeast,
+    breakable
+}{problem}
+\newtcbtheorem[]{solution}{}{
+    enhanced,
+    colback = scolor!7,
+    coltitle = scolor!7,
+    boxrule = 0pt,
+    frame hidden,
+    borderline west = {0.6mm}{0mm}{scolor},
+    before skip = 0pt,
+    after skip = 3ex,
+    sharp corners,
+    fonttitle = \tiny,
+    rounded corners = southeast,
+    attach title to upper = {},
+    title after break = {},
+    title = {},
+    breakable
+}{solution}
+
+\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+
+\newcommand{\quotewrap}[1]{“#1”}
+
+\newcommand{\inline}[1]{\transparent{0.5}\fcolorbox{CtpOverlay0}{CtpSurface2}{\texttt{#1}}\transparent{1}}
